@@ -1,0 +1,23 @@
+<!-- Messages -->
+<div class="container my-4">
+
+    @if(flashMessages.has('success-message'))
+    <div class="alert alert-success alert-dismissible fade show mt-2 auto-hide message" role="alert" >
+        <strong>{{ flashMessages.get('success-message') }}</strong>
+        <button type="button" class="close" data-dismis="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    @endif
+
+    @if(flashMessages.has('error-message'))
+    <div class="alert alert-danger alert-dismissible fade show mt-2 auto-hide message" role="alert" >
+        <strong>{{ flashMessages.get('error-message') }}</strong>
+        <button type="button" class="close" data-dismis="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    @endif
+
+</div>
+<!-- Messages end here -->

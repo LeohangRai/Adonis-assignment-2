@@ -1,0 +1,46 @@
+@layout('layouts/default')
+
+@section('content')
+<div class="container">
+	<h3 class="text-center">List of Categories</h3>
+	<table class="table table-bordered text-center mt-2">
+		<thead class="text-center bg-dark text-white">
+			<th>Title</th>
+			<th>Slug</th>
+			<th>Actions</th>
+		</thead>
+
+		<tbody class="text-center">
+			@each(category in categories)
+			<tr>
+				<td>{{ category.title }}</td>
+				<td>{{ category.slug }}</td>
+				<td class="d-flex align-items-center justify-content-center">
+					<a
+						href="/categories/{{category.id}}/edit"
+						class="btn btn-sm btn-success"
+						>Edit</a
+					>
+					<form
+						action="{{ `/categories/${category.id}?_method=DELETE` }}"
+						method="post"
+					>
+						<button
+							type="submit"
+							class="btn btn-sm btn-danger ml-2"
+						>
+							Delete
+						</button>
+					</form>
+				</td>
+			</tr>
+			@endeach
+		</tbody>
+	</table>
+	<div class="d-flex flex-column justify-content-center align-items-center">
+		<a href="{{ route('categories.create')}}" class="btn btn-sm btn-primary mt-3">
+			Add new category
+		</a>
+	</div>
+</div>
+@endsection

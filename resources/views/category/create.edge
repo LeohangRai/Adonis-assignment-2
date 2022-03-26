@@ -1,0 +1,22 @@
+@layout('layouts/default')
+
+@section('content')
+<div class="container py-3 my-2">
+
+    <h3>Add new category</h3>
+    <form method="POST" action="{{ route('categories.store') }}"> 
+      <div class="form-group">
+          <label for="title">Title</label>
+          <input type="text" class="form-control" id="title" name="title" placeholder="Enter title" required>
+      </div>
+
+      <div class="form-group">
+        <label for="slug">Slug</label>
+        <input type="text" class="form-control" id="slug" name="slug" placeholder="Enter slug" required>
+      </div>
+
+      <button class="btn btn-sm btn-primary mt-3" type="submit">Submit</button>
+      
+    </form>
+</div>
+@endsection

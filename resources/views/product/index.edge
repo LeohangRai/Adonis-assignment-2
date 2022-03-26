@@ -1,0 +1,50 @@
+@layout('layouts/default')
+
+@section('content')
+<div class="container">
+	<h3 class="text-center">List of Products</h3>
+	<table class="table table-bordered text-center mt-2">
+		<thead class="text-center bg-dark text-white">
+			<th>Name</th>
+			<th>Brand</th>
+			<th>Description</th>
+			<th>Category</th>
+			<th>Actions</th>
+		</thead>
+
+		<tbody class="text-center">
+			@each(product in products)
+			<tr>
+				<td>{{ product.name }}</td>
+				<td>{{ product.brand }}</td>
+				<td>{{ product.description }}</td>
+				<td>{{ product.category.title }}</td>
+				<td class="d-flex align-items-center justify-content-center">
+					<a
+						href="/products/{{product.id}}/edit"
+						class="btn btn-sm btn-success"
+						>Edit</a
+					>
+					<form
+						action="{{ `/products/${product.id}?_method=DELETE` }}"
+						method="post"
+					>
+						<button
+							type="submit"
+							class="btn btn-sm btn-danger ml-2"
+						>
+							Delete
+						</button>
+					</form>
+				</td>
+			</tr>
+			@endeach
+		</tbody>
+	</table>
+	<div class="d-flex flex-column justify-content-center align-items-center">
+		<a href="{{ route('products.create')}}" class="btn btn-sm btn-primary mt-3">
+			Add new product
+		</a>
+	</div>
+</div>
+@endsection
